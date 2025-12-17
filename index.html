@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>La Sala de Juntas... con Alcohol</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+
+<!-- ============================
+     LOGIN ÚNICO
+============================= -->
+<section id="inicio" class="vista activa portada-inicial">
+
+  <h1 class="titulo-principal">Bienvenido a LA SALA DE JUNTAS...CON ALCOHOL 🍸</h1>
+  <p class="subtitulo-principal">
+    Un solo acceso. Dos destinos: Empleado o Administrador.
+  </p>
+
+  <div class="portada-contenedor login-unico">
+
+    <div class="portada-panel">
+      <h2>INICIAR SESIÓN</h2>
+      <p>Ingresa tus credenciales. El sistema sabrá quién eres.</p>
+
+      <label for="login-usuario">Usuario</label>
+      <input type="text" id="login-usuario" placeholder="Número de empleado o usuario admin">
+
+      <label for="login-password-general">Contraseña</label>
+      <input type="password" id="login-password-general" placeholder="Tu contraseña secreta">
+
+      <button class="btn" onclick="loginUnico()">Entrar</button>
+
+      <small><a href="#">¿Olvidaste tu contraseña? RH te puede salvar.</a></small>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ============================
+     PANEL DEL EMPLEADO
+============================= -->
+<section id="empleado" class="vista">
+
+  <h2>Panel del Empleado</h2>
+
+  <div class="layout-dos-columnas">
+
+    <!-- Información personal -->
+    <div class="user-card">
+  <h3>Información Personal</h3>
+      <p><strong>Nombre:</strong> <span id="emp-nombre">—</span></p>
+      <p><strong>Número:</strong> <span id="emp-numero">—</span></p>
+      <p><strong>Correo:</strong> <span id="emp-correo">—</span></p>
+      <p><strong>Contacto:</strong> <span id="emp-contacto">—</span></p>
+      <p><strong>Ingreso:</strong> <span id="emp-ingreso">—</span></p>
+    </div>
+
+    <!-- Acciones -->
+    <div class="user-card">
+      <h3>Acciones del Día</h3>
+
+      <button class="btn" onclick="registrarEntrada()">Registrar Entrada</button>
+      <button class="btn" onclick="registrarSalida()">Registrar Salida</button>
+
+      <button class="btn" onclick="mostrarVista('horas')">Ver Horas Trabajadas</button>
+      <button class="btn" onclick="mostrarVista('nomina')">Ver Nómina</button>
+      <button class="btn" onclick="mostrarVista('servicios')">Servicios</button>
+
+      <button class="btn cancelar" onclick="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ============================
+     HORAS TRABAJADAS
+============================= -->
+<section id="horas" class="vista">
+  <h2>Horas Trabajadas</h2>
+
+  <div class="user-card">
+    <p><strong>Hoy:</strong> <span id="horas-hoy">0</span> horas</p>
+    <p><strong>Semana:</strong> <span id="horas-semana">0</span> horas</p>
+    <p><strong>Mes:</strong> <span id="horas-mes">0</span> horas</p>
+
+    <button class="btn" onclick="mostrarVista('empleado')">Volver</button>
+  </div>
+</section>
+
+<!-- ============================
+     NÓMINA
+============================= -->
+<section id="nomina" class="vista">
+  <h2>Mi Nómina</h2>
+
+  <div class="user-card">
+    <p><strong>Horas trabajadas:</strong> <span id="nomina-horas">0</span></p>
+    <p><strong>Pago por hora:</strong> $<span id="nomina-tarifa">0</span></p>
+    <p><strong>Total:</strong> $<span id="nomina-total">0</span></p>
+
+    <button class="btn" onclick="mostrarVista('empleado')">Volver</button>
+  </div>
+</section>
+
+<!-- ============================
+     SERVICIOS DEL EMPLEADO
+============================= -->
+<section id="servicios" class="vista">
+  <h2>Servicios del Empleado</h2>
+
+  <div class="user-card">
+
+    <h3>Permisos</h3>
+    <button class="btn" onclick="solicitarPermiso('Estrés extremo')">Estrés extremo</button>
+    <button class="btn" onclick="solicitarPermiso('Junta que pudo ser correo')">Junta que pudo ser correo</button>
+    <button class="btn" onclick="solicitarPermiso('Auditoría emocional')">Auditoría emocional</button>
+    <button class="btn" onclick="solicitarPermiso('Llegó la cigüeña')">Llegó la cigüeña</button>
+    <button class="btn" onclick="solicitarPermiso('Defunción')">Permiso por defunción</button>
+
+    <h3>Vacaciones</h3>
+    <button class="btn" onclick="solicitarVacaciones()">Solicitar Vacaciones</button>
+
+    <h3>Recursos Humanos</h3>
+    <textarea id="mensaje-rh" placeholder="Escribe tu solicitud aquí..."></textarea>
+    <button class="btn" onclick="enviarRH()">Enviar a RH</button>
+
+    <button class="btn cancelar" onclick="mostrarVista('empleado')">Volver</button>
+
+  </div>
+</section>
+
+<!-- ============================
+     PANEL DEL ADMINISTRADOR
+============================= -->
+<section id="admin" class="vista">
+
+  <h2>Panel del Administrador</h2>
+
+  <div class="user-card">
+    <button class="btn" onclick="mostrarVista('alta')">Registrar Empleado</button>
+    <button class="btn" onclick="mostrarVista('baja')">Inactivar Empleado</button>
+    <button class="btn" onclick="mostrarVista('notificaciones')">Notificaciones</button>
+
+    <button class="btn cancelar" onclick="cerrarSesion()">Cerrar Sesión</button>
+  </div>
+
+</section>
+
+<!-- ============================
+     ALTA DE EMPLEADO
+============================= -->
+<section id="alta" class="vista">
+  <h2>Registrar Nuevo Empleado</h2>
+
+  <div class="user-card">
+
+    <label>Nombre</label>
+    <input type="text" id="nuevo-nombre">
+
+    <label>Número</label>
+    <input type="number" id="nuevo-numero">
+
+    <label>Correo</label>
+    <input type="email" id="nuevo-correo">
+
+    <label>Contacto</label>
+    <input type="text" id="nuevo-contacto">
+
+    <label>Fecha de ingreso</label>
+    <input type="date" id="nuevo-ingreso">
+
+    <label>Contraseña</label>
+    <input type="password" id="nuevo-password">
+
+    <button class="btn" onclick="darDeAltaEmpleado()">Registrar</button>
+    <button class="btn cancelar" onclick="mostrarVista('admin')">Volver</button>
+
+  </div>
+</section>
+
+<!-- ============================
+     BAJA DE EMPLEADO
+============================= -->
+<section id="baja" class="vista">
+  <h2>Inactivar Empleado</h2>
+
+  <div class="user-card">
+    <div id="lista-baja"></div>
+
+    <button class="btn cancelar" onclick="mostrarVista('admin')">Volver</button>
+  </div>
+</section>
+
+<!-- ============================
+     NOTIFICACIONES ADMIN
+============================= -->
+<section id="notificaciones" class="vista">
+  <h2>Notificaciones</h2>
+
+  <div class="user-card" id="lista-notificaciones"></div>
+
+  <button class="btn cancelar" onclick="mostrarVista('admin')">Volver</button>
+</section>
+
+<!-- ============================
+     MODAL GLOBAL
+============================= -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h3 id="modal-titulo">Confirmación</h3>
+    <p id="modal-mensaje">¿Estás seguro?</p>
+
+    <div class="modal-buttons">
+      <button class="btn" id="modal-confirmar">Aceptar</button>
+      <button class="btn cancelar" id="modal-cancelar">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+    const fondos = [
+        "fondos/fondo 4.jpg",
+        "fondos/ FONDO LA SALA.png",
+        "fondos/fondo2.jpg",
+        "fondos/fondo3.jpg",
+        "fondos/salafondo.jpg",
+        "fondos/fondo5.jpg"
+    ];
+
+    const fondoAleatorio = fondos[Math.floor(Math.random() * fondos.length)];
+
+    document.body.style.background = `url('${fondoAleatorio}') no-repeat center center fixed`;
+    document.body.style.backgroundSize = "cover";
+</script>
+</body>
+</html>

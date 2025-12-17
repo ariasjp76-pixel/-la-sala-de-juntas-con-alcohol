@@ -1,0 +1,301 @@
+:root {
+    --fondo: #0a0a0a;
+    --fondo-sec: #141414;
+    --fondo-ter: #1f1f1f;
+    --texto: #e6e6e6;
+    --acento: hsl(315, 93%, 47%);
+    --acento2: #4d4d4d;
+}
+
+/* FONDO GENERAL */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('fondos/') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--texto);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.65);
+    z-index: -1;
+}
+
+/* TITULO PRINCIPAL PORTADA */
+.titulo-principal {
+    text-align: center;
+    font-size: 52px;
+    margin-top: 40px;
+    color: var(--acento);
+    text-shadow: 0 0 15px rgba(179,0,89,0.5);
+}
+
+.subtitulo-principal {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.8;
+}
+
+/* NAVBAR (si luego agregas menú superior) */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 40px;
+    background: rgba(20,20,20,0.85);
+    border-bottom: 2px solid var(--acento);
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    margin-right: 40px;
+    color: var(--texto);
+}
+
+.navbar nav {
+    display: flex;
+    gap: 25px;
+}
+
+.navbar nav a {
+    color: var(--texto);
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: var(--acento);
+}
+
+/* VISTAS SPA */
+.vista {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    padding: 40px 20px;
+}
+
+.vista.activa {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* TARJETAS */
+.user-card {
+    background: rgba(20,20,20,0.85);
+    padding: 25px;
+    margin: 20px auto;
+    border-radius: 12px;
+    border-left: 5px solid var(--acento);
+    box-shadow: 0 0 15px black;
+    backdrop-filter: blur(4px);
+    max-width: 900px;
+}
+
+/* LAYOUT DOS COLUMNAS */
+.layout-dos-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+/* BOTONES */
+.btn, .permiso-btn {
+    background: var(--acento);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.btn:hover, .permiso-btn:hover {
+    background: var(--acento2);
+}
+
+.cancelar {
+    background: var(--acento2);
+}
+
+/* INPUTS / TEXTAREA / SELECT */
+input, textarea, select {
+    background: var(--fondo-ter);
+    border: 2px solid var(--acento2);
+    color: var(--texto);
+    padding: 12px;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--acento);
+}
+
+/* PORTADA */
+.portada-inicial {
+    padding: 60px 20px;
+}
+
+.portada-contenedor {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.portada-panel {
+    background: linear-gradient(135deg, #1f1f3a, #2c2c4d);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    color: white;
+    border-left: 5px solid var(--acento);
+}
+
+.portada-panel h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--acento);
+}
+
+.portada-panel p {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.portada-panel input {
+    margin-bottom: 15px;
+}
+
+.portada-panel small a {
+    color: #ccc;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+/* ACORDEÓN */
+.accordion-btn {
+    width: 100%;
+    background: var(--fondo-ter);
+    color: var(--texto);
+    padding: 15px;
+    border: none;
+    text-align: left;
+    font-size: 17px;
+    cursor: pointer;
+    border-radius: 6px;
+    border-left: 4px solid var(--acento);
+    transition: 0.3s;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.accordion-btn:hover {
+    background: #2c2c2c;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    background: rgba(20,20,20,0.85);
+    border-radius: 0 0 6px 6px;
+    transition: max-height 0.3s ease-out;
+    padding: 0 15px;
+}
+
+/* GRID PERMISOS */
+.permisos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: var(--fondo-sec);
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    border-left: 5px solid var(--acento);
+    box-shadow: 0 0 20px black;
+    animation: aparecer 0.25s ease-out;
+}
+
+@keyframes aparecer {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 50px;
+}
+/* ENCABEZADOS MÁS GRANDES Y LLAMATIVOS */
+h2 {
+    font-size: 48px;      /* tamaño del título principal */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h3 {
+    font-size: 32px;      /* tamaño de subtítulos */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+/* BOTONES DEL EMPLEADO MÁS GRANDES */
+#empleado .btn {
+    font-size: 24px;
+    padding: 20px;
+    height: 80px;
+    border-radius: 12px;
+}
+/* HACER MÁS GRANDE LA SECCIÓN DE INFORMACIÓN PERSONAL */
+#empleado .user-card:first-child h3 {
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+#empleado .user-card:first-child p {
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+#empleado .user-card:first-child strong {
+    font-size: 24px;
+    color: #ff66c4; /* tono neón rosa */
+}
