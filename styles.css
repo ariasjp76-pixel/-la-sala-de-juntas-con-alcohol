@@ -26,7 +26,7 @@ limitations under the License.
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: url('fondos') no-repeat center center fixed;
+    background: url('https://github.com/ariasjp76-pixel/-la-sala-de-juntas-con-alcohol/tree/783793f882b0983419b281c029db4eedec1f63b5/fondos') no-repeat center center fixed;
     background-size: cover;
     color: var(--texto);
 }
@@ -315,6 +315,7 @@ h3 {
     color: #ff66c4; /* tono neón rosa */
 
 }
+
 
 
 
