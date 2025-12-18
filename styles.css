@@ -26,7 +26,7 @@ limitations under the License.
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: url('fondos/') no-repeat center center fixed;
+    background: url('fondos.jpg') no-repeat center center fixed;
     background-size: cover;
     color: var(--texto);
 }
@@ -315,4 +315,5 @@ h3 {
     color: #ff66c4; /* tono neón rosa */
 
 }
+
 
